@@ -1,0 +1,17 @@
+.alerts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.alerts li {
+  background-color: #aaa;
+  margin-bottom: 5px;
+}
+
+.alerts img {
+  margin: auto;
+}
+
+.alerts p {
+  text-align: center;
+}

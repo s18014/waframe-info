@@ -33,31 +33,32 @@ export default class Test extends Component {
       )
     }
     const alerts = datas['alerts']
-    console.log(typeof alerts)
     const alertsBoxes = alerts.map((e, index) => {
-      const reward = e['mission']['reward']
-      const item = reward['items'][0]
-      const credit = reward['credits'] + 'cr'
-      const countedItems = reward['countedItems'][0]
+      const reward = e.mission.reward
+      const item = reward.items[0]
+      const credit = reward.credits + 'cr'
+      const countedItems = reward.countedItems[0]
       let asString = ' + '
       if (countedItems) {
-        asString += countedItems['count'] + ' ' + countedItems['type']
+        asString += countedItems.count + ' ' + countedItems.type
       } else if (item) {
         asString += item
       } else {
         asString = ''
       }
-      const img = reward['thumbnail']
+      const img = reward.thumbnail
 
       return (
         <div key={index}>
-          <li><img src={img} width='20%' height='20%' />{credit + asString}</li>
+          <li><img src={img} width='50' /><p>{credit + asString}</p></li>
         </div>
       )
     })
     return (
-      <div>
-        <ul>{alertsBoxes}</ul>
+      <div className='test test2'>
+        <div className='alerts'>
+          <ul>{alertsBoxes}</ul>
+        </div>
       </div>
     )
   }
