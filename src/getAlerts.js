@@ -1,9 +1,7 @@
 const request = require('superagent')
-// require('superagent-proxy')(request)
-// const proxy = process.env.http_proxy || null
-const URL = 'https://api.warframestat.us/pc'
+const URL = 'https://api.warframestat.us/pc/alerts'
 
-const getWorldState = (callback) => {
+const getAlerts = (callback) => {
   console.log('Getting source from ' + URL)
   request
     .get(URL)
@@ -16,4 +14,4 @@ const getWorldState = (callback) => {
     })
 }
 
-module.exports = getWorldState
+module.exports = getAlerts

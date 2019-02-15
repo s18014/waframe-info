@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import Test from './Test'
+import AlertPage from './AlertPage'
 import './App.css'
+import './main.css'
 
 class App extends Component {
   render () {
     return (
-      <div className='App'>
-        <Test />
-      </div>
+      <AlertPage />
     )
   }
 }

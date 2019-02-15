@@ -1,15 +1,13 @@
-import react, { Component } from 'react'
-import Header from 'Header'
+import React, { Component } from 'react'
+import Header from './Header'
+import AlertMain from './AlertMain'
 
 export default class AlertPage extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
-      <div class='alert-page'>
+      <div className='alert-page'>
         <Header />
+        <AlertMain />
       </div>
     )
   }
