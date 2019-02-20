@@ -166,7 +166,7 @@ main {
 }
 
 .alert-detail img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .alert-text-box {
@@ -203,7 +203,19 @@ main {
 }
 
 /* alert text box elemets */
+
 .item {
+  font-size: 1.4em;
+  color: #0f0;
+}
+
+.credits {
+  font-size: 1.2em;
+  color: deepskyblue;
+}
+
+.nightmare {
+  color: red;
 }
 
 /* footer */

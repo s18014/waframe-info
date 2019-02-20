@@ -1,66 +1,54 @@
 import React, { Component } from 'react'
+import noImg from './img/noimage.png'
 const moment = require('moment')
 
 export default class AlertBox extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      startDate: props.startDate,
-      expiryDate: props.expiryDate,
-      restTime: props.expiryDate - Date.now(),
-      items: props.items,
-      credits: props.credits,
-      location: props.location,
-      missionType: props.missionType,
-      enemyType: props.enemyType,
-      isNightmare: props.isNightmare,
-      isArchwingReq: props.isArchwingReq,
-      enemyLevel: props.enemyLevel,
-      itemImg: props.itemImg
+      restTime: props.expiryDate - Date.now()
     }
-    setInterval(() => {
+    this.timerId = 0
+  }
+
+  componentDidMount () {
+    this.timerId = setInterval(() => {
       let newRestTime = (this.props.expiryDate - Date.now())
       if (newRestTime <= 0) newRestTime = 0
       this.setState({ restTime: newRestTime })
     }, 1000)
   }
 
-  componentWillReciveProps (props) {
+  componentWillUnmount () {
+    console.log('AlertBox unmounted')
+    clearInterval(this.timerId)
+  }
+
+  componentDidReciveProps (props) {
     this.setState({
-      startDate: props.startDate,
-      expiryDate: props.expiryDate,
-      restTime: props.expiryDate - Date.now(),
-      items: props.items,
-      credits: props.credits,
-      location: props.location,
-      missionType: props.missionType,
-      enemyType: props.enemyType,
-      isNightmare: props.isNightmare,
-      isArchwingReq: props.isArchwingReq,
-      enemyLevel: props.enemyLevel,
-      itemImg: props.itemImg
+      restTime: props.expiryDate - Date.now()
     })
   }
 
   getRestTime () {
-    return Math.floor((this.state.expiryDate - Date.now()))
+    return Math.floor((this.props.expiryDate - Date.now()))
   }
 
-  timeFormater (msec) {
-    const date = new Date(msec)
-    let hour = date.getUTCHours()
-    let minutes = date.getUTCMinutes()
-    let seconds = date.getUTCSeconds()
-    const times = [hour, minutes, seconds].map((v) => {
+  timeFormater (ms) {
+    let h = Math.floor(ms / 1000 / 60 / 60)
+    let min = Math.floor((ms - h * 1000 * 60 * 60) / 1000 / 60)
+    let sec = Math.floor((ms - h * 1000 * 60 * 50 - min * 1000 * 60) / 1000)
+    const times = [h, min, sec].map((v) => {
       return ('0' + v).slice(-2)
     })
     return times.join(':')
   }
 
   render () {
-    const restTime = (this.getRestTime() >= 0) ? this.timeFormater(this.getRestTime()) : '終了'
-    const startDate = moment(this.state.startDate).format('YYYY/MM/DD HH:mm:ss')
-    const expiryDate = moment(this.state.expiryDate).format('YYYY/MM/DD HH:mm:ss')
+    const restTime = (this.getRestTime() >= 0) ? '残り ' + this.timeFormater(this.getRestTime()) : '終了'
+    const startDate = moment(this.props.startDate).format('[開始 ]YYYY/MM/DD HH:mm:ss')
+    const expiryDate = moment(this.props.expiryDate).format('[終了 ]YYYY/MM/DD HH:mm:ss')
+    const img = (this.props.itemImg) ? this.props.itemImg : noImg
     return (
       <div className='alert-box'>
         <div className='alert-date'>
@@ -68,16 +56,16 @@ export default class AlertBox extends Component {
           <p>{expiryDate.toString()}</p>
         </div>
         <div className='alert-detail'>
-          <figure><img src={this.state.itemImg} alt='hoge' /></figure>
+          <figure><img src={img} alt='Items' /></figure>
           <div className='alert-text-box'>
             <ul>
-              <li><p className='item'>{this.state.items}</p></li>
-              <li><p className='credits'>{this.state.credits}</p></li>
-              <li><p className='location'>{this.state.location}</p></li>
-              <li><p className='mission-type'>{this.state.missionType}</p></li>
-              <li><p className='enemy-type'>{this.state.enemyType}</p></li>
-              <li><p className='nightmare'>{this.state.isNightmare}</p></li>
-              <li><p className='enemy-level'>{this.state.enemyLevel}</p></li>
+              <li><p className='item'>{this.props.items}</p></li>
+              <li><p className='credits'>{this.props.credits}</p></li>
+              <li><p className='location'>{this.props.location}</p></li>
+              <li><p className='mission-type'>{this.props.missionType}</p></li>
+              <li><p className='enemy-type'>{this.props.enemyType}</p></li>
+              <li><p className='nightmare'>{this.props.isNightmare}</p></li>
+              <li><p className='enemy-level'>{this.props.enemyLevel}</p></li>
             </ul>
           </div>
         </div>

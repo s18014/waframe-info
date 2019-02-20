@@ -2,18 +2,7 @@ import React, { Component } from 'react'
 import AlertBox from './AlertBox'
 const request = require('superagent')
 const URL = 'https://api.warframestat.us/pc/alerts'
-const getAlerts = (callback) => {
-  console.log('Getting source from ' + URL)
-  request
-    .get(URL)
-    .end((err, res) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-      callback(res.body)
-    })
-}
+// const URL = 'http://localhost:3000/test.json'
 
 export default class AlertBoxes extends Component {
   constructor (props) {
@@ -21,13 +10,42 @@ export default class AlertBoxes extends Component {
     this.state = {
       data: null
     }
+    this.timerId = 0
   }
 
-  componentWillMount () {
-    getAlerts((data) => {
-      if (!data) return
-      this.setState({ data: data })
-    })
+  componentDidMount () {
+    this.getAlerts()
+    this.timerId = setInterval(() => this.update(), 1000 * 60)
+  }
+
+  componentWillUnmount () {
+    console.log('AlertBoxes unmounted')
+    clearInterval(this.timerId)
+  }
+
+  update () {
+    this.getAlerts()
+  }
+
+  getAlerts () {
+    console.log('Getting source from ' + URL)
+    request
+      .get(URL)
+      .end((err, res) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+        this.loadedJson(res.body)
+      })
+  }
+
+  loadedJson (json) {
+    if (!json) {
+      console.log('no exist a json data')
+      return
+    }
+    this.setState({ data: json })
   }
 
   makeBoxes () {
@@ -40,19 +58,29 @@ export default class AlertBoxes extends Component {
       const startDate = data.activation
       const expiryDate = data.expiry
       const itemImg = data.mission.reward.thumbnail
+      const items = data.mission.reward.itemString
+      const credits = data.mission.reward.credits
+      const rewardTypes = data.rewardTypes[0]
+      const location = data.mission.node
+      const missionType = data.mission.type
+      const enemyType = data.mission.faction
+      const isNightmare = data.mission.nightmare
+      const isArchwingReq = data.mission.archwingRequired
+      const enemyLevel = data.mission.minEnemyLevel + ' ~ ' + data.mission.maxEnemyLevel
+      const id = data.id
       return (
         <AlertBox
-          key={index}
+          key={id}
           startDate={Date.parse(startDate)}
           expiryDate={Date.parse(expiryDate)}
-          items='hoge'
-          credits='hoge'
-          location='hoge'
-          missionType='hoge'
-          enemyType='hoge'
-          isNightmare='hoge'
-          isArchwingReq='hoge'
-          enemyLevel='hoge'
+          items={items}
+          credits={credits}
+          location={location}
+          missionType={missionType}
+          enemyType={enemyType}
+          isNightmare={isNightmare}
+          isArchwingReq={isArchwingReq}
+          enemyLevel={enemyLevel}
           itemImg={itemImg}
         />
       )
@@ -61,9 +89,10 @@ export default class AlertBoxes extends Component {
   }
 
   render () {
+    const boxes = this.makeBoxes()
     return (
       <div className='alert-boxes'>
-        {this.makeBoxes()}
+        {boxes}
       </div>
     )
   }
