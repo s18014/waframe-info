@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AlertBox from './AlertBox'
 const request = require('superagent')
 const URL = 'https://api.warframestat.us/pc/alerts'
-// const URL = 'http://localhost:3000/test.json'
+// const URL = './test.json'
 
 export default class AlertBoxes extends Component {
   constructor (props) {

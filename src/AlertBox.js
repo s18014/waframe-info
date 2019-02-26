@@ -48,6 +48,8 @@ export default class AlertBox extends Component {
     const restTime = (this.getRestTime() >= 0) ? '残り ' + this.timeFormater(this.getRestTime()) : '終了'
     const startDate = moment(this.props.startDate).format('[開始 ]YYYY/MM/DD HH:mm:ss')
     const expiryDate = moment(this.props.expiryDate).format('[終了 ]YYYY/MM/DD HH:mm:ss')
+    const credits = this.props.credits + 'cr'
+    const enemyLevel = 'Lv:' + this.props.enemyLevel
     const img = (this.props.itemImg) ? this.props.itemImg : noImg
     return (
       <div className='alert-box'>
@@ -60,12 +62,12 @@ export default class AlertBox extends Component {
           <div className='alert-text-box'>
             <ul>
               <li><p className='item'>{this.props.items}</p></li>
-              <li><p className='credits'>{this.props.credits}</p></li>
+              <li><p className='credits'>{credits}</p></li>
               <li><p className='location'>{this.props.location}</p></li>
               <li><p className='mission-type'>{this.props.missionType}</p></li>
               <li><p className='enemy-type'>{this.props.enemyType}</p></li>
               <li><p className='nightmare'>{this.props.isNightmare}</p></li>
-              <li><p className='enemy-level'>{this.props.enemyLevel}</p></li>
+              <li><p className='enemy-level'>{enemyLevel}</p></li>
             </ul>
           </div>
         </div>
