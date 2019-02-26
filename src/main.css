@@ -166,14 +166,13 @@ main {
 
 .alert-detail figure {
   display: flex;
+  flex: 0 0 100px;
   align-items: center;
-  width: 100px;
-  height: 100px;
   margin: auto 0 auto 0;
 }
 
 .alert-detail img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .alert-text-box {
@@ -233,8 +232,7 @@ main {
 
 @media only screen and (max-width: 768px) {
   .alert-detail figure {
-    width: 80px;
-    height: 80px;
+    flex: 0 0 60px;
   }
   
   .alert-boxes {
