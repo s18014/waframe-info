@@ -60,7 +60,6 @@ export default class AlertBoxes extends Component {
       const itemImg = data.mission.reward.thumbnail
       const items = data.mission.reward.itemString
       const credits = data.mission.reward.credits
-      const rewardTypes = data.rewardTypes[0]
       const location = data.mission.node
       const missionType = data.mission.type
       const enemyType = data.mission.faction
