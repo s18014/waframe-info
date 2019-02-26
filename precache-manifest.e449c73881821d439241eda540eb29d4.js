@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d66b042a6cdb439a4cfa",
-    "url": "/waframe-info/static/css/main.fb22ac2b.chunk.css"
+    "revision": "162487b7901ad84a09a6",
+    "url": "/waframe-info/static/css/main.ee8a995f.chunk.css"
   },
   {
-    "revision": "d66b042a6cdb439a4cfa",
-    "url": "/waframe-info/static/js/main.d66b042a.chunk.js"
+    "revision": "162487b7901ad84a09a6",
+    "url": "/waframe-info/static/js/main.162487b7.chunk.js"
   },
   {
     "revision": "22246b8e64af1f6eac4e",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/waframe-info/static/js/2.ce987796.chunk.js"
   },
   {
-    "revision": "a87599cca5453698cc57f44a1790586c",
+    "revision": "bbe256bb04f27f0381d877d520151050",
     "url": "/waframe-info/index.html"
   }
 ];

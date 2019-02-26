@@ -1,13 +1,13 @@
 {
-  "main.css": "/waframe-info/static/css/main.fb22ac2b.chunk.css",
-  "main.js": "/waframe-info/static/js/main.d66b042a.chunk.js",
-  "main.js.map": "/waframe-info/static/js/main.d66b042a.chunk.js.map",
+  "main.css": "/waframe-info/static/css/main.ee8a995f.chunk.css",
+  "main.js": "/waframe-info/static/js/main.162487b7.chunk.js",
+  "main.js.map": "/waframe-info/static/js/main.162487b7.chunk.js.map",
   "runtime~main.js": "/waframe-info/static/js/runtime~main.22246b8e.js",
   "runtime~main.js.map": "/waframe-info/static/js/runtime~main.22246b8e.js.map",
   "static/js/2.ce987796.chunk.js": "/waframe-info/static/js/2.ce987796.chunk.js",
   "static/js/2.ce987796.chunk.js.map": "/waframe-info/static/js/2.ce987796.chunk.js.map",
   "index.html": "/waframe-info/index.html",
-  "precache-manifest.addf8eb97d4f88a8374225435fd755a2.js": "/waframe-info/precache-manifest.addf8eb97d4f88a8374225435fd755a2.js",
+  "precache-manifest.e449c73881821d439241eda540eb29d4.js": "/waframe-info/precache-manifest.e449c73881821d439241eda540eb29d4.js",
   "service-worker.js": "/waframe-info/service-worker.js",
-  "static/css/main.fb22ac2b.chunk.css.map": "/waframe-info/static/css/main.fb22ac2b.chunk.css.map"
+  "static/css/main.ee8a995f.chunk.css.map": "/waframe-info/static/css/main.ee8a995f.chunk.css.map"
 }
